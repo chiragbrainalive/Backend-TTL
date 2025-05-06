@@ -1,8 +1,9 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document} from 'mongoose';
 
-@Schema({ timestamps: true })
+@Schema({ timestamps: true }) 
 export class User extends Document {
+  
   @Prop({ required: true })
   shirt: string;
 
@@ -19,3 +20,4 @@ export class User extends Document {
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
+UserSchema.index({ "createdAt": 1 }, { expireAfterSeconds: 60 });

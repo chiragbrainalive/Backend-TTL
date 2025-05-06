@@ -15,7 +15,7 @@ export class UserService {
       const createdUser = new this.userModel({
         shirt: createUserDto.shirt,
         pant: createUserDto.pant,
-        shoes: createUserDto.shoes,
+        shoes: createUserDto.shoes, 
         phone: createUserDto.phone,
       });
 
