@@ -1,6 +1,6 @@
-import { BadRequestException, Body, Controller, Get, Post } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Get, HttpCode, Post } from '@nestjs/common';
 import { UserService } from './user.service';
-import { CreateUserDto } from '../dto/user.dto';  // Adjust the path if needed
+import { CreateUserDto } from '../dto/user.dto'; 
 import { User } from '../../schema/user.schema';
 
 @Controller('users')//decorators jo @ lagate hai usko bolte hai 
@@ -8,6 +8,7 @@ export class UserController {
   constructor(private readonly userService: UserService) {}  // Inject UserService here
 
   @Post('create-user')
+  // @HttpCode(203)  // Set the response status code to 203 OK
   async create(@Body() createUserDto: CreateUserDto): Promise<any> {
     if(!createUserDto) {
       console.error('createUserDto is undefined or null');
